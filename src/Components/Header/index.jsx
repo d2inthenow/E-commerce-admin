@@ -14,7 +14,10 @@ import { FaUser } from "react-icons/fa";
 import { BsGearFill } from "react-icons/bs";
 import { FaChartLine } from "react-icons/fa6";
 import admin from "../../assets/images/admin.jpg";
-
+import { useContext } from "react";
+import { MyContext } from "../../App";
+import { RiMenuFold3Fill } from "react-icons/ri";
+import { RiMenuFold4Fill } from "react-icons/ri";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -33,17 +36,30 @@ const Header = () => {
   const handleCloseMyAcc = () => {
     setAnchorMyAcc(null);
   };
+
+  const context = useContext(MyContext);
+
   return (
     <header
-      className="w-full h-[auto] py-2 pr-7 pl-64 bg-[#fff] flex items-center
-     justify-between border-b  shadow-md"
+      className={`w-full h-[auto] py-2 pr-7  bg-[#fff] flex items-center
+     justify-between border-b shadow-md ${
+       context.isSidebarOpen === true ? "pl-80" : "pl-20"
+     } transition-all duration-500`}
     >
       <div className="part1">
-        <Button className="!w-[40px] !h-[40px] !rounded-full !min-w-[40px] !text-[rgba(0,0,0,0.8)]">
-          <CiMenuBurger className="text-[22px] text-[rgba(0,0,0,0.8)]" />
+        <Button
+          className="!w-[40px] !h-[40px] !rounded-full !min-w-[40px]
+         !text-[rgba(0,0,0,0.8)]"
+          onClick={() => context.setIsSidebarOpen(!context.isSidebarOpen)}
+        >
+          {context.isSidebarOpen === true ? (
+            <RiMenuFold3Fill className="text-[22px] text-[rgba(0,0,0,0.8)]" />
+          ) : (
+            <RiMenuFold4Fill className="text-[22px] text-[rgba(0,0,0,0.8)]" />
+          )}
         </Button>
       </div>
-      <div className="part2 w-[40%] flex items-center justify-end gap-4">
+      <div className="part2 w-[40%] flex items-center justify-end gap-5">
         <IconButton aria-label="cart">
           <StyledBadge badgeContent={4} color="secondary">
             <GoBellFill className="text-[22px] text-[rgba(0,0,0,0.8)]" />

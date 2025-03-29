@@ -11,7 +11,9 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { IoBagHandle } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
 import { Collapse } from "react-collapse";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MyContext } from "../../App";
+
 const SideBar = () => {
   const [subMenuIndex, setSubMenuIndex] = useState(null);
   const isOpenSubMenu = (index) => {
@@ -21,11 +23,15 @@ const SideBar = () => {
       setSubMenuIndex(index);
     }
   };
+
+  const context = useContext(MyContext);
   return (
     <>
       <div
-        className="siderbar fixed top-0 left-0 bg-[#fff] w-[18%] h-full
-       border-r border-[rgba(0,0,0,0.1)] py-2 px-4"
+        className={`siderbar fixed top-0 left-0 bg-[#fff] h-full
+       border-r border-[rgba(0,0,0,0.1)] py-2 px-4 ${
+         context.isSidebarOpen ? "w-[16%]" : "w-0"
+       } `}
       >
         <div className="w-full py-2">
           <Link to="/">

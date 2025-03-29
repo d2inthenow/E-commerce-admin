@@ -26,3 +26,7 @@ body {
 .btn-blue:hover {
   background: #3067e5 !important;
 }
+
+th.MuiTableCell-root {
+  @apply bg-[#ccc] py-2 !important;
+}
