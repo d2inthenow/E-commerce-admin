@@ -17,7 +17,16 @@ import ProgressBar from "../../Components/ProgressBar";
 import { CiEdit } from "react-icons/ci";
 import { TbEyeSearch } from "react-icons/tb";
 import { FaRegTrashCan } from "react-icons/fa6";
-import Tooltip from "@mui/material/Tooltip";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import Pagination from "@mui/material/Pagination";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -56,6 +65,7 @@ const DashBoard = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [categoryFilterValue, setCategoryFilterValue] = useState("");
+  const [chart1Data, setChart1Data] = useState();
 
   const handleChangeCategoryFilter = (event) => {
     setCategoryFilterValue(event.target.value);
@@ -69,6 +79,81 @@ const DashBoard = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const data = [
+    {
+      name: "JAN",
+      TotalUsers: 4000,
+      TotalSales: 2400,
+      amt: 2400,
+    },
+    {
+      name: "FEB",
+      TotalUsers: 3000,
+      TotalSales: 1398,
+      amt: 2210,
+    },
+    {
+      name: "MAR",
+      TotalUsers: 2000,
+      TotalSales: 9800,
+      amt: 2290,
+    },
+    {
+      name: "APR",
+      TotalUsers: 2780,
+      TotalSales: 3908,
+      amt: 2000,
+    },
+    {
+      name: "MAY",
+      TotalUsers: 1890,
+      TotalSales: 4800,
+      amt: 2181,
+    },
+    {
+      name: "JUN",
+      TotalUsers: 2390,
+      TotalSales: 3800,
+      amt: 2500,
+    },
+    {
+      name: "JUL",
+      TotalUsers: 3490,
+      TotalSales: 4300,
+      amt: 2100,
+    },
+    {
+      name: "AUG",
+      TotalUsers: 1890,
+      TotalSales: 4800,
+      amt: 2181,
+    },
+    {
+      name: "SEP",
+      TotalUsers: 2390,
+      TotalSales: 3800,
+      amt: 2500,
+    },
+    {
+      name: "OCT",
+      TotalUsers: 3490,
+      TotalSales: 4300,
+      amt: 2100,
+    },
+    {
+      name: "NOV",
+      TotalUsers: 1890,
+      TotalSales: 4800,
+      amt: 2181,
+    },
+    {
+      name: "DEC",
+      TotalUsers: 2390,
+      TotalSales: 3800,
+      amt: 2500,
+    },
+  ];
 
   return (
     <>
@@ -508,22 +593,17 @@ const DashBoard = () => {
                 </td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </td>
               </tr>
@@ -577,22 +657,17 @@ const DashBoard = () => {
                 </td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </td>
               </tr>
@@ -645,22 +720,17 @@ const DashBoard = () => {
                 </td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </td>
               </tr>
@@ -714,22 +784,17 @@ const DashBoard = () => {
                 </td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Remove" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </td>
               </tr>
@@ -847,22 +912,17 @@ const DashBoard = () => {
                 </TableCell>
                 <TableCell style={{ minWidth: columns.minWidth }}>
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -919,22 +979,17 @@ const DashBoard = () => {
                 </TableCell>
                 <TableCell style={{ minWidth: columns.minWidth }}>
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -990,22 +1045,17 @@ const DashBoard = () => {
                 </TableCell>
                 <TableCell style={{ minWidth: columns.minWidth }}>
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -1062,22 +1112,17 @@ const DashBoard = () => {
                 </TableCell>
                 <TableCell style={{ minWidth: columns.minWidth }}>
                   <div className="flex items-center gap-2">
-                    <Tooltip title="Edit" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <CiEdit className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
 
-                    <Tooltip title="View" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Delete" placement="top">
-                      <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
-                        <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
-                      </Button>
-                    </Tooltip>
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <TbEyeSearch className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
+
+                    <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
+                      <FaRegTrashCan className="text-[20px] !text-[rgba(0,0,0,0.7)]" />
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -1092,6 +1137,52 @@ const DashBoard = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+      </div>
+
+      <div className="card my-4 shadow-md sm:rounded-lg bg-white">
+        <div className="flex items-center justify-between px-5 py-5 pb-0">
+          <h2 className="text-[18px] font-[600]">Total Users & Total Sales</h2>
+        </div>
+        <div className="flex items-center px-5 py-5 pt-0 gap-5">
+          <span className="flex items-center gap-1">
+            <span className="block w-[8px] h-[8px] rounded-full bg-green-500"></span>
+            Total Users
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="block w-[10px] h-[10px] rounded-full bg-[#3872fa]"></span>
+            Total Sales
+          </span>
+        </div>
+        <LineChart
+          width={1200}
+          height={600}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke="none" />
+          <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+          <YAxis tick={{ fontSize: 12 }} />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="TotalSales"
+            stroke="#3872fa"
+            activeDot={{ r: 8 }}
+            strokeWidth={3}
+          />
+          <Line
+            type="monotone"
+            dataKey="TotalUsers"
+            stroke="#82ca9d"
+            strokeWidth={3}
+          />
+        </LineChart>
       </div>
     </>
   );
