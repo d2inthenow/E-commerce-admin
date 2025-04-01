@@ -35,7 +35,7 @@ const SideBar = () => {
       >
         <div className="w-full py-2">
           <Link to="/">
-            <img src={logo} alt="" className="w-[150px] " />
+            <img src={logo} alt="" className="w-[200px] " />
           </Link>
         </div>
 

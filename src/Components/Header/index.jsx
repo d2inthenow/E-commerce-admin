@@ -66,99 +66,107 @@ const Header = () => {
           </StyledBadge>
         </IconButton>
 
-        <div
-          className="rounded-full w-[35px] h-[35px] cursor-pointer overflow-hidden"
-          onClick={handleClickMyAcc}
-        >
-          <img src={admin} alt="" className="w-full h-full object-cover" />
-        </div>
-        <Menu
-          anchorEl={anchorMyAcc}
-          id="account-menu"
-          open={openMyAcc}
-          onClose={handleCloseMyAcc}
-          onClick={handleCloseMyAcc}
-          slotProps={{
-            paper: {
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&::before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
-            },
-          }}
-          transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        >
-          <MenuItem onClick={handleCloseMyAcc}>
-            <div className="flex items-center gap-3">
-              <div className="rounded-full w-[35px] h-[35px] cursor-pointer overflow-hidden">
-                <img
-                  src={admin}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="info">
-                <h3 className="text-[16px] font-[500] leading-5">D2 Code</h3>
-                <p className="text-[13px] font-[400] opacity-70">
-                  admin@gmail.com
-                </p>
-              </div>
+        {context.isLogin === true ? (
+          <div className="relative">
+            <div
+              className="rounded-full w-[35px] h-[35px] cursor-pointer overflow-hidden"
+              onClick={handleClickMyAcc}
+            >
+              <img src={admin} alt="" className="w-full h-full object-cover" />
             </div>
-          </MenuItem>
-          <Divider />
-          <MenuItem
-            onClick={handleCloseMyAcc}
-            className="flex items-center gap-3"
-          >
-            <FaUser className="text-[18px]" />
-            <span className="text-[14px]">Profile</span>
-          </MenuItem>
+            <Menu
+              anchorEl={anchorMyAcc}
+              id="account-menu"
+              open={openMyAcc}
+              onClose={handleCloseMyAcc}
+              onClick={handleCloseMyAcc}
+              slotProps={{
+                paper: {
+                  elevation: 0,
+                  sx: {
+                    overflow: "visible",
+                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    mt: 1.5,
+                    "& .MuiAvatar-root": {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    "&::before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "background.paper",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                  },
+                },
+              }}
+              transformOrigin={{ horizontal: "right", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            >
+              <MenuItem onClick={handleCloseMyAcc}>
+                <div className="flex items-center gap-3">
+                  <div className="rounded-full w-[35px] h-[35px] cursor-pointer overflow-hidden">
+                    <img
+                      src={admin}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="info">
+                    <h3 className="text-[16px] font-[500] leading-5">
+                      D2 Code
+                    </h3>
+                    <p className="text-[13px] font-[400] opacity-70">
+                      admin@gmail.com
+                    </p>
+                  </div>
+                </div>
+              </MenuItem>
+              <Divider />
+              <MenuItem
+                onClick={handleCloseMyAcc}
+                className="flex items-center gap-3"
+              >
+                <FaUser className="text-[18px]" />
+                <span className="text-[14px]">Profile</span>
+              </MenuItem>
 
-          <MenuItem
-            onClick={handleCloseMyAcc}
-            className="flex items-center gap-3"
-          >
-            <BsGearFill className="text-[18px]" />
-            <span className="text-[14px]">Account Setting</span>
-          </MenuItem>
+              <MenuItem
+                onClick={handleCloseMyAcc}
+                className="flex items-center gap-3"
+              >
+                <BsGearFill className="text-[18px]" />
+                <span className="text-[14px]">Account Setting</span>
+              </MenuItem>
 
-          <MenuItem
-            onClick={handleCloseMyAcc}
-            className="flex items-center gap-3"
-          >
-            <FaChartLine className="text-[18px]" />
-            <span className="text-[14px]">Activity Log</span>
-          </MenuItem>
+              <MenuItem
+                onClick={handleCloseMyAcc}
+                className="flex items-center gap-3"
+              >
+                <FaChartLine className="text-[18px]" />
+                <span className="text-[14px]">Activity Log</span>
+              </MenuItem>
 
-          <MenuItem
-            onClick={handleCloseMyAcc}
-            className="flex items-center gap-3"
-          >
-            <IoLogOut className="text-[18px]" />
-            <span className="text-[14px]">Sign Out</span>
-          </MenuItem>
-        </Menu>
+              <MenuItem
+                onClick={handleCloseMyAcc}
+                className="flex items-center gap-3"
+              >
+                <IoLogOut className="text-[18px]" />
+                <span className="text-[14px]">Sign Out</span>
+              </MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <Button className="btn-blue !text-[12px]">Login</Button>
+        )}
       </div>
     </header>
   );
