@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import DashBoardBoxes from "../../Components/DashboardBoxes";
 import { IoMdHand } from "react-icons/io";
 import logo1 from "../../assets/images/logo1.jpg";
@@ -39,6 +39,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { FaCloudArrowDown } from "react-icons/fa6";
 import { GrAdd } from "react-icons/gr";
+import { MyContext } from "../../App";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -53,6 +54,7 @@ const columns = [
 
 const DashBoard = () => {
   const [isOpenOrderProduct, setIsOpenOrderProduct] = useState(null);
+  const [categoryFilterValue, setCategoryFilterValue] = useState("");
 
   const isShowOrderProduct = (index) => {
     if (isOpenOrderProduct === index) {
@@ -64,23 +66,8 @@ const DashBoard = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [categoryFilterValue, setCategoryFilterValue] = useState("");
-  const [chart1Data, setChart1Data] = useState();
 
-  const handleChangeCategoryFilter = (event) => {
-    setCategoryFilterValue(event.target.value);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  const data = [
+  const [chart1Data, setChart1Data] = useState([
     {
       name: "JAN",
       TotalUsers: 4000,
@@ -153,7 +140,22 @@ const DashBoard = () => {
       TotalSales: 3800,
       amt: 2500,
     },
-  ];
+  ]);
+
+  const context = useContext(MyContext);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  const handleChangeCategoryFilter = (event) => {
+    setCategoryFilterValue(event.target.value);
+  };
 
   return (
     <>
@@ -168,7 +170,15 @@ const DashBoard = () => {
             once
           </p>
           <br />
-          <Button className="btn-blue !capitalize flex gap-1">
+          <Button
+            className="btn-blue !capitalize flex gap-1"
+            onClick={() =>
+              context.setIsOpenFullScreenPanel({
+                open: true,
+                model: "Add Product",
+              })
+            }
+          >
             <AiOutlinePlus className="text-[20px]" />
             Add Product
           </Button>
@@ -836,7 +846,7 @@ const DashBoard = () => {
             <Button className="!py-2 !px-5 !text-[white] !bg-green-500 text-[13px] flex gap-x-2">
               <FaCloudArrowDown /> Export
             </Button>
-            <Button className=" !text-[white] btn-blue text-[13px] flex gap-x-2">
+            <Button className=" !text-[white] btn-blue !text-[13px] flex gap-x-2">
               <GrAdd /> Add Product
             </Button>
           </div>
@@ -1156,7 +1166,7 @@ const DashBoard = () => {
         <LineChart
           width={1200}
           height={600}
-          data={data}
+          data={chart1Data}
           margin={{
             top: 5,
             right: 30,

@@ -150,7 +150,7 @@ const SignUp = () => {
             </Link>
           </div>
           <Button className="btn-blue w-full !text-[20px] !mb-4">
-            Sign In
+            Sign Up
           </Button>
         </form>
       </div>
