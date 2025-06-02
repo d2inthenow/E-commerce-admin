@@ -22,6 +22,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Slide from "@mui/material/Slide";
 import AddProduct from "./Pages/Products/addProduct";
+import HomeSliderBanners from "./Pages/HomeSliderBanners";
+import AddHomeSlide from "./Pages/HomeSliderBanners/addHomeSlide";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -110,6 +112,33 @@ function App() {
         </>
       ),
     },
+    {
+      path: "/homeSlide/list",
+      exact: true,
+      element: (
+        <>
+          <section className="main">
+            <Header />
+            <div className="contentMain flex">
+              <div
+                className={`sidebarWrapper overflow-hidden ${
+                  isSidebarOpen === true ? "w-[16%]" : "w-0 opacity-0"
+                } transition-all  duration-500`}
+              >
+                <SideBar />
+              </div>
+              <div
+                className={`contentRight py-4 px-5 ${
+                  isSidebarOpen === false ? "w-[100%]" : "w-[84%]"
+                } transition-all duration-500`}
+              >
+                <HomeSliderBanners />
+              </div>
+            </div>
+          </section>
+        </>
+      ),
+    },
   ]);
 
   const values = {
@@ -157,6 +186,7 @@ function App() {
             </Toolbar>
           </AppBar>
           {isOpenFullScreenPanel.model === "Add Product" && <AddProduct />}
+          {isOpenFullScreenPanel.model === "Add Home Slide" && <AddHomeSlide />}
         </Dialog>
       </MyContext.Provider>
     </>
