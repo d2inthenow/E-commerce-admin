@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.jpg";
-import { useContext, useState } from "react";
-import { MyContext } from "../../App";
+import { useState } from "react";
 import bg from "../../assets/images/background.jpg";
 import { IoMdLogIn } from "react-icons/io";
 import Button from "@mui/material/Button";

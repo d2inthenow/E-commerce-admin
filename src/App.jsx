@@ -4,18 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashBoard from "./Pages/Dashboard";
 import Header from "./Components/Header";
 import SideBar from "./Components/SideBar";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Products from "./Pages/Products";
 import { IoMdClose } from "react-icons/io";
 
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -24,12 +19,16 @@ import Slide from "@mui/material/Slide";
 import AddProduct from "./Pages/Products/addProduct";
 import HomeSliderBanners from "./Pages/HomeSliderBanners";
 import AddHomeSlide from "./Pages/HomeSliderBanners/addHomeSlide";
+import CategoryList from "./Pages/Category";
+import AddCategory from "./Pages/Category/addCategory";
+import MyContext from "./context/MyContext";
+import SubCategoryList from "./Pages/Category/subCategoryList";
+import AddSubCategory from "./Pages/Category/addSubCategory";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const MyContext = createContext();
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
@@ -139,6 +138,60 @@ function App() {
         </>
       ),
     },
+    {
+      path: "/category/list",
+      exact: true,
+      element: (
+        <>
+          <section className="main">
+            <Header />
+            <div className="contentMain flex">
+              <div
+                className={`sidebarWrapper overflow-hidden ${
+                  isSidebarOpen === true ? "w-[16%]" : "w-0 opacity-0"
+                } transition-all  duration-500`}
+              >
+                <SideBar />
+              </div>
+              <div
+                className={`contentRight py-4 px-5 ${
+                  isSidebarOpen === false ? "w-[100%]" : "w-[84%]"
+                } transition-all duration-500`}
+              >
+                <CategoryList />
+              </div>
+            </div>
+          </section>
+        </>
+      ),
+    },
+    {
+      path: "/subCategory/list",
+      exact: true,
+      element: (
+        <>
+          <section className="main">
+            <Header />
+            <div className="contentMain flex">
+              <div
+                className={`sidebarWrapper overflow-hidden ${
+                  isSidebarOpen === true ? "w-[16%]" : "w-0 opacity-0"
+                } transition-all  duration-500`}
+              >
+                <SideBar />
+              </div>
+              <div
+                className={`contentRight py-4 px-5 ${
+                  isSidebarOpen === false ? "w-[100%]" : "w-[84%]"
+                } transition-all duration-500`}
+              >
+                <SubCategoryList />
+              </div>
+            </div>
+          </section>
+        </>
+      ),
+    },
   ]);
 
   const values = {
@@ -185,8 +238,16 @@ function App() {
               </Typography>
             </Toolbar>
           </AppBar>
-          {isOpenFullScreenPanel.model === "Add Product" && <AddProduct />}
-          {isOpenFullScreenPanel.model === "Add Home Slide" && <AddHomeSlide />}
+          {isOpenFullScreenPanel?.model === "Add Product" && <AddProduct />}
+          {isOpenFullScreenPanel?.model === "Add Home Slide" && (
+            <AddHomeSlide />
+          )}
+          {isOpenFullScreenPanel?.model === "Add New Category" && (
+            <AddCategory />
+          )}
+          {isOpenFullScreenPanel?.model === "Add New Sub Category" && (
+            <AddSubCategory />
+          )}
         </Dialog>
       </MyContext.Provider>
     </>
@@ -194,4 +255,3 @@ function App() {
 }
 
 export default App;
-export { MyContext };

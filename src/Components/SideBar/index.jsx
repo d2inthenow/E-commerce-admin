@@ -12,7 +12,7 @@ import { IoBagHandle } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
 import { Collapse } from "react-collapse";
 import { useState, useContext } from "react";
-import { MyContext } from "../../App";
+import MyContext from "../../context/MyContext";
 
 const SideBar = () => {
   const [subMenuIndex, setSubMenuIndex] = useState(null);
@@ -27,12 +27,7 @@ const SideBar = () => {
   const context = useContext(MyContext);
   return (
     <>
-      <div
-        className={`siderbar fixed top-0 left-0 bg-[#fff] h-full
-       border-r border-[rgba(0,0,0,0.1)] py-2 px-4 ${
-         context.isSidebarOpen ? "w-[16%]" : "w-0"
-       } `}
-      >
+      <div className="siderbar bg-[#fff] h-full border-r border-[rgba(0,0,0,0.1)] py-2 px-4 w-full">
         <div className="w-full py-2">
           <Link to="/">
             <img src={logo} alt="" className="w-[200px] " />
@@ -153,7 +148,7 @@ const SideBar = () => {
             <Collapse isOpened={subMenuIndex === 3 ? true : false}>
               <ul className="w-full ">
                 <li className="w-full ">
-                  <Link to="/categories">
+                  <Link to="/category/list">
                     <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
                       <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
                       Category List
@@ -161,12 +156,18 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li className="w-full ">
-                  <Link to="/category/add">
-                    <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
-                      <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
-                      Add a category
-                    </Button>
-                  </Link>
+                  <Button
+                    className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3"
+                    onClick={() =>
+                      context.setIsOpenFullScreenPanel({
+                        open: true,
+                        model: "Add New Category",
+                      })
+                    }
+                  >
+                    <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
+                    Add a category
+                  </Button>
                 </li>
                 <li className="w-full ">
                   <Link to="/category/subCat">
@@ -177,12 +178,18 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li className="w-full ">
-                  <Link to="/category/subCat/add">
-                    <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
-                      <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
-                      Add a sub category
-                    </Button>
-                  </Link>
+                  <Button
+                    className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3"
+                    onClick={() =>
+                      context.setIsOpenFullScreenPanel({
+                        open: true,
+                        model: "Add New Sub Category",
+                      })
+                    }
+                  >
+                    <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
+                    Add a sub category
+                  </Button>
                 </li>
               </ul>
             </Collapse>

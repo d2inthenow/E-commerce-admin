@@ -1,15 +1,28 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import productImage from "../../assets/images/product/product.jpg";
+import productImage from "../../assets/images/product/product3.jpg";
 import UploadBox from "../../Components/UploadBox";
 import { IoMdClose } from "react-icons/io";
 import { Button } from "@mui/material";
 import { FaCloudUploadAlt } from "react-icons/fa";
-const AddHomeSlide = () => {
+const AddCategory = () => {
   return (
     <section className="p-5 bg-gray-100">
       <form className="form p-8 py-3 ">
         <div className="scroll max-h-[520px] overflow-y-scroll pr-4 pt-4">
+          <div className="grid grid-cols-1 mb-3">
+            <div className="col w-[25%]">
+              <h3 className="text-[14px] font-[500] mb-1">Category Name</h3>
+              <input
+                type="text"
+                className="w-full h-[40px] border border-[rgba(0,0,0,0.1)] focus:outline-none focus:border-[rgba(0,0,0,0.4)]
+            rounded-sm p-3 text-sm"
+              />
+            </div>
+            <br />
+            <h3 className="text-[18px] font-[500] mb-1">Category Image</h3>
+          </div>
+
           <div className="grid grid-cols-7 gap-4">
             <div className="uploadBoxWrapper relative">
               <span
@@ -102,4 +115,4 @@ const AddHomeSlide = () => {
   );
 };
 
-export default AddHomeSlide;
+export default AddCategory;

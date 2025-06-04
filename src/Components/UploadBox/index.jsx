@@ -8,7 +8,7 @@ const UploadBox = (props) => {
   flex items-center justify-center flex-col relative"
     >
       <FaRegImages className="text-[40px] opacity-35 pointer-events-none" />
-      <h4 className="text-[14px] pointer-events-none">UploadBox</h4>
+      <h4 className="text-[14px] pointer-events-none">Image Upload</h4>
 
       <input
         type="file"

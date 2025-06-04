@@ -23,7 +23,7 @@ import { CiEdit } from "react-icons/ci";
 import { TbEyeSearch } from "react-icons/tb";
 import { FaRegTrashCan } from "react-icons/fa6";
 import SearchBox from "../../Components/SearchBox";
-import { MyContext } from "../../App";
+import MyContext from "../../context/MyContext";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

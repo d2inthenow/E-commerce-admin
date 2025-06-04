@@ -15,7 +15,7 @@ import { BsGearFill } from "react-icons/bs";
 import { FaChartLine } from "react-icons/fa6";
 import admin from "../../assets/images/admin.jpg";
 import { useContext } from "react";
-import { MyContext } from "../../App";
+import MyContext from "../../context/MyContext";
 import { RiMenuFold3Fill } from "react-icons/ri";
 import { RiMenuFold4Fill } from "react-icons/ri";
 const StyledBadge = styled(Badge)(({ theme }) => ({

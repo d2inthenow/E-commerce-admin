@@ -39,7 +39,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { FaCloudArrowDown } from "react-icons/fa6";
 import { GrAdd } from "react-icons/gr";
-import { MyContext } from "../../App";
+import MyContext from "../../context/MyContext";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
