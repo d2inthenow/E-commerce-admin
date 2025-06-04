@@ -27,7 +27,12 @@ const SideBar = () => {
   const context = useContext(MyContext);
   return (
     <>
-      <div className="siderbar bg-[#fff] h-full border-r border-[rgba(0,0,0,0.1)] py-2 px-4 w-full">
+      <div
+        className={`siderbar fixed top-0 left-0 bg-[#fff] h-full
+       border-r border-[rgba(0,0,0,0.1)] py-2 px-4 ${
+         context.isSidebarOpen ? "w-[16%]" : "w-0"
+       } `}
+      >
         <div className="w-full py-2">
           <Link to="/">
             <img src={logo} alt="" className="w-[200px] " />
@@ -61,7 +66,7 @@ const SideBar = () => {
             <Collapse isOpened={subMenuIndex === 1 ? true : false}>
               <ul className="w-full ">
                 <li className="w-full ">
-                  <Link to="/homeBanner">
+                  <Link to="/homeSlide/list">
                     <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
                       <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
                       Home Banner List
@@ -69,12 +74,19 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li className="w-full ">
-                  <Link to="/homeBanner/add">
-                    <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
-                      <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
-                      Add Home Banner Slide
-                    </Button>
-                  </Link>
+                  <Button
+                    className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start
+                     !text-[13px] !font-[500] !pl-9 flex gap-3"
+                    onClick={() =>
+                      context.setIsOpenFullScreenPanel({
+                        open: true,
+                        model: "Add Home Slide",
+                      })
+                    }
+                  >
+                    <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
+                    Add Home Banner Slide
+                  </Button>
                 </li>
               </ul>
             </Collapse>
@@ -170,7 +182,7 @@ const SideBar = () => {
                   </Button>
                 </li>
                 <li className="w-full ">
-                  <Link to="/category/subCat">
+                  <Link to="/subCategory/list">
                     <Button className="!w-full !text-[rgba(0,0,0,0.7)] !capitalize !justify-start !text-[13px] !font-[500] !pl-9 flex gap-3">
                       <span className="block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)] "></span>
                       Sub Category List

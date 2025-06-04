@@ -24,6 +24,7 @@ import AddCategory from "./Pages/Category/addCategory";
 import MyContext from "./context/MyContext";
 import SubCategoryList from "./Pages/Category/subCategoryList";
 import AddSubCategory from "./Pages/Category/addSubCategory";
+import Users from "./Pages/Users";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -39,6 +40,7 @@ function App() {
   });
 
   const router = createBrowserRouter([
+    // Main Route
     {
       path: "/",
       exact: true,
@@ -66,6 +68,7 @@ function App() {
         </>
       ),
     },
+    // Login Route
     {
       path: "/login",
       exact: true,
@@ -75,6 +78,7 @@ function App() {
         </>
       ),
     },
+    // Sign Up Route
     {
       path: "/sign-up",
       exact: true,
@@ -84,6 +88,7 @@ function App() {
         </>
       ),
     },
+    // Products Route
     {
       path: "/products",
       exact: true,
@@ -111,6 +116,7 @@ function App() {
         </>
       ),
     },
+    // Home Slider Banners Route
     {
       path: "/homeSlide/list",
       exact: true,
@@ -138,6 +144,7 @@ function App() {
         </>
       ),
     },
+    // Category Route
     {
       path: "/category/list",
       exact: true,
@@ -165,6 +172,7 @@ function App() {
         </>
       ),
     },
+    // Sub Category Route
     {
       path: "/subCategory/list",
       exact: true,
@@ -186,6 +194,34 @@ function App() {
                 } transition-all duration-500`}
               >
                 <SubCategoryList />
+              </div>
+            </div>
+          </section>
+        </>
+      ),
+    },
+    // Users Route
+    {
+      path: "/users",
+      exact: true,
+      element: (
+        <>
+          <section className="main">
+            <Header />
+            <div className="contentMain flex">
+              <div
+                className={`sidebarWrapper overflow-hidden ${
+                  isSidebarOpen === true ? "w-[16%]" : "w-0 opacity-0"
+                } transition-all  duration-500`}
+              >
+                <SideBar />
+              </div>
+              <div
+                className={`contentRight py-4 px-5 ${
+                  isSidebarOpen === false ? "w-[100%]" : "w-[84%]"
+                } transition-all duration-500`}
+              >
+                <Users />
               </div>
             </div>
           </section>

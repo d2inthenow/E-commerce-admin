@@ -12,7 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 import product from "../../assets/images/product/product1.jpg";
-import product1 from "../../assets/images/product/product.jpg";
+import product1 from "../../assets/images/product/product3.jpg";
 import product2 from "../../assets/images/product/product2.jpg";
 import { CiEdit } from "react-icons/ci";
 import { TbEyeSearch } from "react-icons/tb";
@@ -23,19 +23,16 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const columns = [
   { id: "image", label: "CATEGORY IMAGE", minWidth: 250 },
+  { id: "catName", label: "CATEGORY NAME", minWidth: 250 },
   { id: "action", label: "ACTION", minWidth: 100 },
 ];
 
 const CategoryList = () => {
-  const [categoryFilterValue, setCategoryFilterValue] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const context = useContext(MyContext);
 
-  const handleChangeCategoryFilter = (event) => {
-    setCategoryFilterValue(event.target.value);
-  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -108,6 +105,7 @@ const CategoryList = () => {
                     </div>
                   </div>
                 </TableCell>
+                <TableCell>Fashion</TableCell>
                 <TableCell width={100}>
                   <div className="flex items-center gap-2">
                     <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
@@ -138,6 +136,7 @@ const CategoryList = () => {
                     </div>
                   </div>
                 </TableCell>
+                <TableCell>Beauty</TableCell>
                 <TableCell width={100}>
                   <div className="flex items-center gap-2">
                     <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
@@ -168,6 +167,7 @@ const CategoryList = () => {
                     </div>
                   </div>
                 </TableCell>
+                <TableCell>Electronics</TableCell>
                 <TableCell width={100}>
                   <div className="flex items-center gap-2">
                     <Button className="!w-[40px] !h[40px] !rounded-full hover:!bg-[#f1f1f1] !bg-[#f1f1f1] !min-w-[40px]">
