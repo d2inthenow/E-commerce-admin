@@ -1,6 +1,5 @@
-import React from "react";
 import Button from "@mui/material/Button";
-import { CiMenuBurger } from "react-icons/ci";
+import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material";
 import { GoBellFill } from "react-icons/go";
@@ -18,6 +17,7 @@ import { useContext } from "react";
 import MyContext from "../../context/MyContext";
 import { RiMenuFold3Fill } from "react-icons/ri";
 import { RiMenuFold4Fill } from "react-icons/ri";
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -165,7 +165,9 @@ const Header = () => {
             </Menu>
           </div>
         ) : (
-          <Button className="btn-blue !text-[12px]">Login</Button>
+          <Link to="/login">
+            <Button className="btn-blue !text-[12px]">Login</Button>
+          </Link>
         )}
       </div>
     </header>

@@ -25,6 +25,7 @@ import MyContext from "./context/MyContext";
 import SubCategoryList from "./Pages/Category/subCategoryList";
 import AddSubCategory from "./Pages/Category/addSubCategory";
 import Users from "./Pages/Users";
+import Orders from "./Pages/Orders";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -222,6 +223,34 @@ function App() {
                 } transition-all duration-500`}
               >
                 <Users />
+              </div>
+            </div>
+          </section>
+        </>
+      ),
+    },
+    // Orders Route
+    {
+      path: "/orders",
+      exact: true,
+      element: (
+        <>
+          <section className="main">
+            <Header />
+            <div className="contentMain flex">
+              <div
+                className={`sidebarWrapper overflow-hidden ${
+                  isSidebarOpen === true ? "w-[16%]" : "w-0 opacity-0"
+                } transition-all  duration-500`}
+              >
+                <SideBar />
+              </div>
+              <div
+                className={`contentRight py-4 px-5 ${
+                  isSidebarOpen === false ? "w-[100%]" : "w-[84%]"
+                } transition-all duration-500`}
+              >
+                <Orders />
               </div>
             </div>
           </section>
