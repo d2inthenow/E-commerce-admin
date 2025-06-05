@@ -13,6 +13,7 @@ import SearchBox from "../../Components/SearchBox";
 import MyContext from "../../context/MyContext";
 import { MdEmail } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
+import { SlCalender } from "react-icons/sl";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -21,6 +22,7 @@ const columns = [
   { id: "userName", label: "USER NAME", minWidth: 100 },
   { id: "userEmail", label: "USER EMAIL", minWidth: 150 },
   { id: "userPhone", label: "USER PHONE", minWidth: 130 },
+  { id: "createdDate", label: "CREATED DATE", minWidth: 130 },
 ];
 
 const Users = () => {
@@ -102,6 +104,163 @@ const Users = () => {
                 <TableCell style={{ minWidth: columns.minWidth }}>
                   <span className="flex items-center gap-2">
                     <MdLocalPhone /> 0123456789
+                  </span>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <SlCalender /> 24/12/2025
+                  </span>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <Checkbox {...label} size="small" />
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <div className="flex items-center gap-4 w-[70px]">
+                    <div className="img w-[65px] h-[65px] overflow-hidden rounded-md group">
+                      <Link to="/product/1">
+                        <img
+                          src={user}
+                          alt=""
+                          className="w-full group-hover:scale-105 transition-all"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  Duong
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdEmail /> 123duong@gmail.com
+                  </span>
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdLocalPhone /> 0123456789
+                  </span>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <SlCalender /> 24/12/2025
+                  </span>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <Checkbox {...label} size="small" />
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <div className="flex items-center gap-4 w-[70px]">
+                    <div className="img w-[65px] h-[65px] overflow-hidden rounded-md group">
+                      <Link to="/product/1">
+                        <img
+                          src={user}
+                          alt=""
+                          className="w-full group-hover:scale-105 transition-all"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  Duong
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdEmail /> 123duong@gmail.com
+                  </span>
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdLocalPhone /> 0123456789
+                  </span>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <SlCalender /> 24/12/2025
+                  </span>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <Checkbox {...label} size="small" />
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <div className="flex items-center gap-4 w-[70px]">
+                    <div className="img w-[65px] h-[65px] overflow-hidden rounded-md group">
+                      <Link to="/product/1">
+                        <img
+                          src={user}
+                          alt=""
+                          className="w-full group-hover:scale-105 transition-all"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  Duong
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdEmail /> 123duong@gmail.com
+                  </span>
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdLocalPhone /> 0123456789
+                  </span>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <SlCalender /> 24/12/2025
+                  </span>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <Checkbox {...label} size="small" />
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <div className="flex items-center gap-4 w-[70px]">
+                    <div className="img w-[65px] h-[65px] overflow-hidden rounded-md group">
+                      <Link to="/product/1">
+                        <img
+                          src={user}
+                          alt=""
+                          className="w-full group-hover:scale-105 transition-all"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  Duong
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdEmail /> 123duong@gmail.com
+                  </span>
+                </TableCell>
+
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <MdLocalPhone /> 0123456789
+                  </span>
+                </TableCell>
+                <TableCell style={{ minWidth: columns.minWidth }}>
+                  <span className="flex items-center gap-2">
+                    <SlCalender /> 24/12/2025
                   </span>
                 </TableCell>
               </TableRow>

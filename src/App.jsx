@@ -26,6 +26,9 @@ import SubCategoryList from "./Pages/Category/subCategoryList";
 import AddSubCategory from "./Pages/Category/addSubCategory";
 import Users from "./Pages/Users";
 import Orders from "./Pages/Orders";
+import ForgotPassword from "./Pages/ForgotPassword";
+import VerifyAccount from "./Pages/VerifyAccount";
+import ChangePassword from "./Pages/ChangePassword";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -33,7 +36,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const [isOpenFullScreenPanel, setIsOpenFullScreenPanel] = useState({
     open: false,
@@ -86,6 +89,36 @@ function App() {
       element: (
         <>
           <SignUp />
+        </>
+      ),
+    },
+    // Forgot Password Route
+    {
+      path: "/forgot-password",
+      exact: true,
+      element: (
+        <>
+          <ForgotPassword />
+        </>
+      ),
+    },
+    // Verify Email Route
+    {
+      path: "/verify-account",
+      exact: true,
+      element: (
+        <>
+          <VerifyAccount />
+        </>
+      ),
+    },
+    // change password Route
+    {
+      path: "/change-password",
+      exact: true,
+      element: (
+        <>
+          <ChangePassword />
         </>
       ),
     },
